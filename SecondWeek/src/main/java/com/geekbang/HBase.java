@@ -30,6 +30,7 @@ public class HBase {
             try {
                 admin.createTable(hTableDescriptor);
             } catch (NamespaceNotFoundException e) {
+                //If namespace not found, create it.
                 admin.createNamespace(NamespaceDescriptor.create("huxiaolong").build());
                 admin.createTable(hTableDescriptor);
             }
@@ -44,6 +45,7 @@ public class HBase {
         put.addColumn(Bytes.toBytes("score"), Bytes.toBytes("programming"), Bytes.toBytes("82"));
         conn.getTable(tableName).put(put);
 
+        //TODO:Others
         Put put1 = new Put(Bytes.toBytes("Hu Xiaolong"));
         put1.addColumn(Bytes.toBytes("info"), Bytes.toBytes("student_id"), Bytes.toBytes("G20220735030074"));
         conn.getTable(tableName).put(put1);
