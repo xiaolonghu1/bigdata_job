@@ -12,7 +12,7 @@ public class HBase {
 
         //Get Connection
         Configuration configuration = HBaseConfiguration.create();
-        configuration.set("hbase.zookeeper.quorum", "127.0.0.1");
+        configuration.set("hbase.zookeeper.quorum", "emr-worker-2,emr-worker-1,emr-header-1");
         configuration.set("hbase.zookeeper.property.clientPort", "2181");
         Connection conn = ConnectionFactory.createConnection(configuration);
         Admin admin = conn.getAdmin();
@@ -27,7 +27,12 @@ public class HBase {
             HColumnDescriptor familyScore = new HColumnDescriptor("score");
             hTableDescriptor.addFamily(familyInfo);
             hTableDescriptor.addFamily(familyScore);
-            admin.createTable(hTableDescriptor);
+            try {
+                admin.createTable(hTableDescriptor);
+            } catch (NamespaceNotFoundException e) {
+                admin.createNamespace(NamespaceDescriptor.create("huxiaolong").build());
+                admin.createTable(hTableDescriptor);
+            }
             System.out.println("Table create successful");
         }
 
