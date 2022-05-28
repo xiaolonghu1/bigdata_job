@@ -65,5 +65,6 @@ JOIN (
 	GROUP BY a.userid
 	ORDER BY total DESC LIMIT 1
 ) c on b.userid = c.userid
+GROUP BY a.moviename
 ORDER BY avgrate DESC LIMIT 10;
 
