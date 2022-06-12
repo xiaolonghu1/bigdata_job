@@ -2,7 +2,6 @@ package com.geekbang.objects
 
 import java.net.URI
 
-import com.owen.bigdata.utils.PathUtils
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.FileSystem
 

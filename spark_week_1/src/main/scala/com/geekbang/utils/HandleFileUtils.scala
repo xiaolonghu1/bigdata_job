@@ -3,9 +3,6 @@ package com.geekbang.utils
 import java.net.URI
 import java.util.concurrent.Executors
 
-import com.owen.bigdata.SparkDistCP.KeyedCopyDefinition
-import com.liveramp.objects.CopyDefinitionWithDependencies
-import com.owen.bigdata.objects.{CopyDefinitionWithDependencies, SerializableFileStatus, SingleCopyDefinition}
 import org.apache.hadoop.fs.{FileSystem, Path, RemoteIterator}
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
